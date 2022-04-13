@@ -8,10 +8,14 @@ public class TankModel
 
     public float movementSpeed;
     public float rotatationSpeed;
+    public TankTypes tankType;
+    public Material color;
 
-    public TankModel(float _movement, float _rotation){
+    public TankModel(float _movement, float _rotation, TankTypes tank, Material _color){
         movementSpeed = _movement;
         rotatationSpeed = _rotation;
+        tankType = tank;
+        color = _color;
     } 
 
     public void SetTankController(TankController _tankController){
