@@ -17,7 +17,6 @@ public class TankView : MonoBehaviour
         cam.transform.position = new Vector3(0f, 3f, -4f);
     }
 
-    // Update is called once per frame
     void Update()
     {
         Movement();

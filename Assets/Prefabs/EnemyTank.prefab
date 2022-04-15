@@ -90,12 +90,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3281590996684089746}
-  - component: {fileID: 6147014404278898735}
   - component: {fileID: 2645967809119086753}
   - component: {fileID: 3700203337732525411}
-  - component: {fileID: 8462801905027365796}
+  - component: {fileID: 970980796130459203}
+  - component: {fileID: -7584875336449477758}
   m_Layer: 0
-  m_Name: Tank
+  m_Name: EnemyTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,24 +116,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6147014404278898735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3281590996684387442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b9d36bd01a9aea4a84386d229f0d14d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 2645967809119086753}
-  childs:
-  - {fileID: 3281590996682189570}
-  - {fileID: 3281590996682189572}
-  - {fileID: 3281590996682189578}
-  - {fileID: 3281590996682189568}
 --- !u!54 &2645967809119086753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -164,7 +146,21 @@ CapsuleCollider:
   m_Height: 2.6578245
   m_Direction: 1
   m_Center: {x: 0.0032564402, y: 1.2805414, z: 0.00012946129}
---- !u!65 &8462801905027365796
+--- !u!114 &970980796130459203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281590996684387442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490188a0047d5b54980df9d178de5a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2645967809119086753}
+  childs: []
+--- !u!65 &-7584875336449477758
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
