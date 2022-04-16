@@ -26,6 +26,11 @@ public class EnemyTankController
             Stopfire();
     }
 
+    public void TrackPlayerDirection(){
+        if(coroutine != null)
+            enemyTankModel.enemyTankTransform.LookAt(enemyTankModel.tankTransform);
+    }
+
     public void StartFire(){
         if(coroutine == null)    
             coroutine = enemyTankView.StartCoroutine(Fire());
@@ -36,7 +41,6 @@ public class EnemyTankController
             enemyTankView.StopCoroutine(coroutine);
             coroutine = null;
         }
-            
     }
 
     IEnumerator Fire(){

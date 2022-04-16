@@ -12,6 +12,7 @@ public class EnemyTankView : MonoBehaviour
 
     private void Update() {
         enemyTankController.TrackPlayerLocation();
+        enemyTankController.TrackPlayerDirection();
     }
 
     public void SetTankController(EnemyTankController _enemyTankController){

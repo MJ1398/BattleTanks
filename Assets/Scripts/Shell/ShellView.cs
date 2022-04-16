@@ -22,6 +22,8 @@ public class ShellView : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        // if(other.tag == "Player")
+        //     other.GetComponent<TankView>().rb.AddForce(transform.position * -20f);
         if(shellController.IsDestructible())
             Destroy(gameObject);
     }

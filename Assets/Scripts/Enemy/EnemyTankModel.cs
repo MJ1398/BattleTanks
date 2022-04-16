@@ -8,7 +8,6 @@ public class EnemyTankModel
     public Material color;
     public Transform tankTransform;
     public Transform enemyTankTransform;
-    bool shellReloadRequired = false;
 
     public EnemyTankModel(Material _color){
         color = _color;
@@ -21,12 +20,5 @@ public class EnemyTankModel
     public void SetTankTransform(Transform _tankTransform, Transform _enemyTankTransform){
         tankTransform = _tankTransform;
         enemyTankTransform = _enemyTankTransform;
-    }
-
-    public bool ReadyToFire(){
-        if(shellReloadRequired)
-            return false;
-        shellReloadRequired = true;
-        return true;
     }
 }
