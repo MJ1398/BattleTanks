@@ -7,6 +7,7 @@ public class EnemyTankController
     private EnemyTankModel enemyTankModel;
     private EnemyTankView enemyTankView;
     private Rigidbody rb;
+    private Coroutine coroutine;
 
     public EnemyTankController(EnemyTankModel _enemyTankModel, EnemyTankView _enemyTankView, Transform transform){
         enemyTankModel = _enemyTankModel;
@@ -19,13 +20,30 @@ public class EnemyTankController
     }
 
     public void TrackPlayerLocation(){
-        if(Vector3.Distance(enemyTankModel.tankTransform.position, enemyTankModel.enemyTankTransform.position) < 15){
-            Fire();
-        }
+        if(Vector3.Distance(enemyTankModel.tankTransform.position, enemyTankModel.enemyTankTransform.position) < 15)
+            StartFire();
+        else
+            Stopfire();
     }
 
-    public void Fire(){
-        if(enemyTankModel.ReadyToFire())
+    public void StartFire(){
+        if(coroutine == null)    
+            coroutine = enemyTankView.StartCoroutine(Fire());
+    }
+
+    public void Stopfire(){
+        if(coroutine != null){
+            enemyTankView.StopCoroutine(coroutine);
+            coroutine = null;
+        }
+            
+    }
+
+    IEnumerator Fire(){
+        while(true){
             enemyTankView.shellSpawner.CreateShell();
+            yield return new WaitForSeconds(2);
+        }
+        
     }
 }

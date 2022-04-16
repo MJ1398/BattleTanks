@@ -8,7 +8,8 @@ public class TankView : MonoBehaviour
     private float movement;
     private float rotation;
     public Rigidbody rb;
-    public MeshRenderer[] childs; 
+    public MeshRenderer[] childs;
+    public ShellSpawner shellSpawner; 
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class TankView : MonoBehaviour
     void Update()
     {
         Movement();
+        PlayerInput();
         if(movement != 0)
             tankController.Move(movement, tankController.GetTankModel().movementSpeed);
         if(rotation != 0)
@@ -30,6 +32,12 @@ public class TankView : MonoBehaviour
     private void Movement(){
         movement = Input.GetAxis("Vertical");
         rotation = Input.GetAxis("Horizontal");
+    }
+
+    private void PlayerInput(){
+        if(Input.GetKeyDown(KeyCode.Space)){
+            tankController.Fire();
+        }
     }
 
     public void SetTankController(TankController _tankController){

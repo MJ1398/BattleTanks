@@ -27,6 +27,10 @@ public class TankController
         rb.MoveRotation(rb.rotation * deltaRotation);
     }
 
+    public void Fire(){
+        tankView.shellSpawner.CreateShell();
+    }
+
     public TankModel GetTankModel(){
         return tankModel;
     }

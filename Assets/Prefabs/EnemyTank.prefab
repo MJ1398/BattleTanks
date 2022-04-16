@@ -484,4 +484,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shellView: {fileID: 620200201246123116, guid: 8a2682b329477254ba772e88827a5055,
     type: 3}
-  movementSpeed: 10
+  movementSpeed: 20
