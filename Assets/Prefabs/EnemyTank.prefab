@@ -91,9 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3281590996684089746}
   - component: {fileID: 2645967809119086753}
-  - component: {fileID: 3700203337732525411}
-  - component: {fileID: 970980796130459203}
   - component: {fileID: -7584875336449477758}
+  - component: {fileID: 970980796130459203}
   m_Layer: 0
   m_Name: EnemyTank
   m_TagString: Untagged
@@ -113,6 +112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3281590996684089758}
+  - {fileID: 4494154364433528838}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -132,34 +132,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &3700203337732525411
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3281590996684387442}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 1.3289123
-  m_Height: 2.6578245
-  m_Direction: 1
-  m_Center: {x: 0.0032564402, y: 1.2805414, z: 0.00012946129}
---- !u!114 &970980796130459203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3281590996684387442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490188a0047d5b54980df9d178de5a2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 2645967809119086753}
-  childs: []
 --- !u!65 &-7584875336449477758
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,6 +145,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7758734, y: 2.0363123, z: 2.4185066}
   m_Center: {x: 0.0032061338, y: 0.9485494, z: -0.074523926}
+--- !u!114 &970980796130459203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281590996684387442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490188a0047d5b54980df9d178de5a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2645967809119086753}
+  childs:
+  - {fileID: 3281590996682189570}
+  - {fileID: 3281590996682189572}
+  - {fileID: 3281590996682189578}
+  - {fileID: 3281590996682189568}
+  isTankSpawned: 0
+  shellSpawner: {fileID: 7408233601082285032}
 --- !u!1 &3281590996684387444
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,3 +439,49 @@ Transform:
   m_Father: {fileID: 3281590996684089746}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6361069306740372364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4494154364433528838}
+  - component: {fileID: 7408233601082285032}
+  m_Layer: 0
+  m_Name: ShellSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4494154364433528838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6361069306740372364}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.535, z: 0.968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3281590996684089746}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7408233601082285032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6361069306740372364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9331b25d6b7af6a4dae16e3681b3be14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shellView: {fileID: 620200201246123116, guid: 8a2682b329477254ba772e88827a5055,
+    type: 3}
+  movementSpeed: 10

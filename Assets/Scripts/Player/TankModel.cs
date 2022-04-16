@@ -5,7 +5,6 @@ using UnityEngine;
 public class TankModel
 {
     private TankController tankController;
-
     public float movementSpeed;
     public float rotatationSpeed;
     public TankTypes tankType;

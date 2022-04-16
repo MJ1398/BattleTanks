@@ -7,6 +7,12 @@ public class EnemyTankView : MonoBehaviour
     private EnemyTankController enemyTankController;
     public Rigidbody rb;
     public MeshRenderer[] childs;
+    public bool isTankSpawned = false;
+    public ShellSpawner shellSpawner;
+
+    private void Update() {
+        enemyTankController.TrackPlayerLocation();
+    }
 
     public void SetTankController(EnemyTankController _enemyTankController){
         enemyTankController = _enemyTankController;
@@ -19,5 +25,9 @@ public class EnemyTankView : MonoBehaviour
     public void ChangeColor(Material color){
         for(int i = 0; i < childs.Length; i++)
             childs[i].material = color;
+    }
+
+    public Transform GetTankTransform(){
+        return FindObjectOfType<TankView>().transform;
     }
 }

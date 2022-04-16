@@ -44,4 +44,8 @@ public class TankView : MonoBehaviour
         for(int i = 0; i < childs.Length; i++)
             childs[i].material = color;
     }
+
+    public EnemyTankView GetEnemyTankView(){
+        return FindObjectOfType<EnemyTankView>();
+    }
 }
