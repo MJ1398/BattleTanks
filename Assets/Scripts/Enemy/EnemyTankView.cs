@@ -1,26 +1,25 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTankView : MonoBehaviour
 {
-    private EnemyTankController enemyTankController;
-    public Rigidbody rb;
     public MeshRenderer[] childs;
-    public bool isTankSpawned = false;
+    EnemyTankController enemyTankController;
     public ShellSpawner shellSpawner;
+    public LayerMask playerMask;
 
-    private void Update() {
-        enemyTankController.TrackPlayerLocation();
-        enemyTankController.TrackPlayerDirection();
+    void Start() {
+        StartCoroutine(ScanCoroutine());
+        StartCoroutine(FireCoroutine());
+    }
+
+    void FixedUpdate() {
+        if(enemyTankController.isplayerVisible)
+            transform.LookAt(enemyTankController.playerTransform);
     }
 
     public void SetTankController(EnemyTankController _enemyTankController){
         enemyTankController = _enemyTankController;
-    }
-
-    public Rigidbody GetRigidbody(){
-        return rb;
     }
 
     public void ChangeColor(Material color){
@@ -28,7 +27,19 @@ public class EnemyTankView : MonoBehaviour
             childs[i].material = color;
     }
 
-    public Transform GetTankTransform(){
-        return FindObjectOfType<TankView>().transform;
+    IEnumerator ScanCoroutine()
+    {
+        while(true){
+            yield return new WaitForSeconds(0.2f);
+            enemyTankController.ScanPlayer(transform, playerMask);
+        }
+    }
+
+    IEnumerator FireCoroutine(){
+        while(true){
+            if(enemyTankController.isplayerVisible)
+                shellSpawner.CreateShell();
+            yield return new WaitForSeconds(enemyTankController.enemyTankModel.fireCooldown);
+        }
     }
 }

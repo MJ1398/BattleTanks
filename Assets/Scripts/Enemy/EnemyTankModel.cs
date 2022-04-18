@@ -6,19 +6,17 @@ public class EnemyTankModel
 {
     private EnemyTankController enemytankController;
     public Material color;
-    public Transform tankTransform;
-    public Transform enemyTankTransform;
+    public float fireCooldown;
+    public float scanDistance;
 
-    public EnemyTankModel(Material _color){
+    public EnemyTankModel(Material _color, float _fireCooldown, float _scanDistance){
         color = _color;
+        fireCooldown = _fireCooldown;
+        scanDistance = _scanDistance;
     } 
 
     public void SetTankController(EnemyTankController _enemytankController){
         enemytankController = _enemytankController;
     }
 
-    public void SetTankTransform(Transform _tankTransform, Transform _enemyTankTransform){
-        tankTransform = _tankTransform;
-        enemyTankTransform = _enemyTankTransform;
-    }
 }

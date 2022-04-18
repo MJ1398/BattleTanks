@@ -165,6 +165,9 @@ MonoBehaviour:
   - {fileID: 3281590996682189568}
   isTankSpawned: 0
   shellSpawner: {fileID: 7408233601082285032}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &3281590996684387444
 GameObject:
   m_ObjectHideFlags: 0
