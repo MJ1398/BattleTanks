@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShellController
 {
@@ -24,5 +22,9 @@ public class ShellController
 
     public bool IsDestructible(){
         return shellModel.destructible;
+    }
+
+    public int getDamage(){
+        return shellModel.damage;
     }
 }

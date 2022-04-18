@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TankView : MonoBehaviour
 {
@@ -10,23 +8,29 @@ public class TankView : MonoBehaviour
     public Rigidbody rb;
     public MeshRenderer[] childs;
     public ShellSpawner shellSpawner; 
+    GameObject cam;
+    public bool isAlive;
 
     void Start()
     {
-        GameObject cam = GameObject.Find("Main Camera");
+        cam = GameObject.Find("Main Camera");
         cam.transform.SetParent(transform);
         cam.transform.position = new Vector3(0f, 3f, -4f);
+        isAlive = true;
     }
 
     void Update()
     {
+        if(!isAlive){
+            cam.transform.SetParent(null);
+            Destroy(gameObject);
+        }
         Movement();
         PlayerInput();
         if(movement != 0)
             tankController.Move(movement, tankController.GetTankModel().movementSpeed);
         if(rotation != 0)
             tankController.Rotate(rotation, tankController.GetTankModel().rotatationSpeed);
-        
     }
 
     private void Movement(){
@@ -38,6 +42,10 @@ public class TankView : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)){
             tankController.Fire();
         }
+    }
+
+    public void Hit(int damage){
+        tankController.ReduceHealth(damage);
     }
 
     public void SetTankController(TankController _tankController){

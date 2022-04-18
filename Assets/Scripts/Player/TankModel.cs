@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TankModel
 {
@@ -9,12 +7,14 @@ public class TankModel
     public float rotatationSpeed;
     public TankTypes tankType;
     public Material color;
+    public int health;
 
-    public TankModel(float _movement, float _rotation, TankTypes tank, Material _color){
+    public TankModel(float _movement, float _rotation, TankTypes tank, Material _color, int _health){
         movementSpeed = _movement;
         rotatationSpeed = _rotation;
         tankType = tank;
         color = _color;
+        health = _health;
     } 
 
     public void SetTankController(TankController _tankController){

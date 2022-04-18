@@ -7,8 +7,10 @@ public class EnemyTankView : MonoBehaviour
     EnemyTankController enemyTankController;
     public ShellSpawner shellSpawner;
     public LayerMask playerMask;
+    bool isAlive;
 
     void Start() {
+        isAlive = true;
         StartCoroutine(ScanCoroutine());
         StartCoroutine(FireCoroutine());
     }
@@ -29,14 +31,14 @@ public class EnemyTankView : MonoBehaviour
 
     IEnumerator ScanCoroutine()
     {
-        while(true){
+        while(isAlive){
             yield return new WaitForSeconds(0.2f);
             enemyTankController.ScanPlayer(transform, playerMask);
         }
     }
 
     IEnumerator FireCoroutine(){
-        while(true){
+        while(isAlive){
             if(enemyTankController.isplayerVisible)
                 shellSpawner.CreateShell();
             yield return new WaitForSeconds(enemyTankController.enemyTankModel.fireCooldown);

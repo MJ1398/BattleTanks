@@ -484,3 +484,4 @@ MonoBehaviour:
   shellView: {fileID: 620200201246123116, guid: 8a2682b329477254ba772e88827a5055,
     type: 3}
   movementSpeed: 20
+  damage: 50

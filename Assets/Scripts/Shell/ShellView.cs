@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShellView : MonoBehaviour
 {
@@ -22,11 +20,15 @@ public class ShellView : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        // if(other.tag == "Player")
-        //     other.GetComponent<TankView>().rb.AddForce(rb.velocity * 20f);
-        if(shellController.IsDestructible())
+        if(shellController.IsDestructible()){
+            if(other.tag == "Player"){
+                TankView player = other.GetComponent<TankView>();
+                player.Hit(shellController.getDamage());
+            }
             Destroy(gameObject);
+        } 
     }
+
     private void OnTriggerExit(Collider other) {
         shellController.SetDestructible();
     }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyTankModel
 {
@@ -18,5 +16,4 @@ public class EnemyTankModel
     public void SetTankController(EnemyTankController _enemytankController){
         enemytankController = _enemytankController;
     }
-
 }
