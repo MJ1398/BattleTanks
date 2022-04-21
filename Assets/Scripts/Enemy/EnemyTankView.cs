@@ -7,17 +7,17 @@ public class EnemyTankView : MonoBehaviour
     EnemyTankController enemyTankController;
     public ShellSpawner shellSpawner;
     public LayerMask playerMask;
-    bool isAlive;
+    Transform playerTransform;
 
     void Start() {
-        isAlive = true;
-        StartCoroutine(ScanCoroutine());
-        StartCoroutine(FireCoroutine());
+        enemyTankController.isAlive = true;
+        StartCoroutine(enemyTankController.ScanCoroutine());
+        StartCoroutine(enemyTankController.FireCoroutine());
     }
 
     void FixedUpdate() {
         if(enemyTankController.isplayerVisible)
-            transform.LookAt(enemyTankController.playerTransform);
+            transform.LookAt(playerTransform);
     }
 
     public void SetTankController(EnemyTankController _enemyTankController){
@@ -29,19 +29,13 @@ public class EnemyTankView : MonoBehaviour
             childs[i].material = color;
     }
 
-    IEnumerator ScanCoroutine()
-    {
-        while(isAlive){
-            yield return new WaitForSeconds(0.2f);
-            enemyTankController.ScanPlayer(transform, playerMask);
+    public void ScanPlayer(){
+        Collider[] collider = Physics.OverlapSphere(transform.position, enemyTankController.enemyTankModel.scanDistance, playerMask);
+        if(collider.Length > 0){
+            playerTransform = collider[0].transform;
+            enemyTankController.isplayerVisible = true;
         }
-    }
-
-    IEnumerator FireCoroutine(){
-        while(isAlive){
-            if(enemyTankController.isplayerVisible)
-                shellSpawner.CreateShell();
-            yield return new WaitForSeconds(enemyTankController.enemyTankModel.fireCooldown);
-        }
+        else
+            enemyTankController.isplayerVisible = false;
     }
 }
