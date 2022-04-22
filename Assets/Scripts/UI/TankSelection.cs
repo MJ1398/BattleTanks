@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TankSelection : MonoBehaviour
+public class TankSelection 
 {
     public TankSpawner tankSpawner;
     public EnemyTankSpawner enemyTankSpawner;
